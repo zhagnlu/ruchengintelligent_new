@@ -1,0 +1,931 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap');
+
+/* 动画关键帧 */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  margin: 0;
+  padding: 0;
+}
+
+.header-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 40px;
+  margin: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 27px;
+  font-family: 'Inter', Arial, sans-serif;
+  font-weight: 800;
+  color: #0074c2;
+  margin: 0 44px 0 0;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px rgba(76, 161, 255, 0.08);
+}
+
+/* 桌面端，确保 logo 足够大 */
+.logo img {
+  width: 200px;
+  height: auto;
+  margin-right: 10px;
+  display: block;
+}
+
+/* 平板和手机端，适当缩小但保持清晰 */
+@media (max-width: 768px) {
+  .logo img {
+    width: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+    width: 120px;
+  }
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.nav-menu>a,
+.nav-dropdown {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.dropdown-toggle {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+.nav-menu a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #222;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', Arial, sans-serif;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-menu a:hover {
+  color: #0074c2;
+  text-shadow: 0 2px 8px rgba(76, 161, 255, 0.10);
+}
+
+@media (max-width: 768px) {
+  .nav-menu a {
+    margin: 8px 0;
+  }
+}
+
+.banner {
+  position: relative;
+  background: transparent;
+  color: #fff;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+}
+
+.banner-text {
+  display: none;
+  /* 隐藏banner文字区域，因为目前没有内容 */
+}
+
+.banner-text h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0 0 30px 0;
+  letter-spacing: 2px;
+}
+
+/* 轮播容器 */
+.banner-slider {
+  position: relative;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  height: 500px;
+  /* 桌面端设置合适的高度 */
+}
+
+/* 轮播图片 */
+.banner-slide {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-slide.active {
+  display: block;
+}
+
+.banner-slide img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #fff;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* 轮播控制按钮 */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  color: #333;
+  border: none;
+  padding: 15px 12px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.slider-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 20px;
+}
+
+.next-btn {
+  right: 20px;
+}
+
+/* 轮播指示器 */
+.slider-indicators {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.indicator.active {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.2);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .banner-slider {
+    width: 100%;
+    height: 300px;
+    /* 手机端恢复合适的高度 */
+  }
+
+  .banner-slide {
+    height: 100%;
+  }
+
+  .banner-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background: #fff;
+  }
+
+  .slider-btn {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .prev-btn {
+    left: 10px;
+  }
+
+  .next-btn {
+    right: 10px;
+  }
+
+  .slider-indicators {
+    bottom: 15px;
+  }
+
+  .indicator {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* 中等屏幕的优化 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .banner-slider {
+    height: 400px;
+    /* 平板端设置中等高度 */
+  }
+}
+
+/* 更小屏幕的优化 */
+@media (max-width: 480px) {
+  .banner-slider {
+    height: 250px;
+    /* 更小屏幕设置合适的高度 */
+  }
+}
+
+/* 手机端专用图片框架 */
+@media (max-width: 768px) {
+
+  /* 手机端专用图片类 */
+  .banner-slide img.mobile-optimized {
+    object-position: center 20%;
+    /* 调整图片位置，避免重要内容被裁剪 */
+  }
+
+  /* 为不同图片设置不同的位置 */
+  .banner-slide img.mobile-center {
+    object-position: center;
+  }
+
+  .banner-slide img.mobile-top {
+    object-position: center top;
+  }
+
+  .banner-slide img.mobile-bottom {
+    object-position: center bottom;
+  }
+
+  /* 手机端专用图片尺寸类 */
+  .banner-slide img.mobile-portrait {
+    object-position: center 25%;
+    /* 适合竖屏图片 */
+  }
+
+  .banner-slide img.mobile-landscape {
+    object-position: center 40%;
+    /* 适合横屏图片 */
+  }
+
+  .banner-slide img.mobile-square {
+    object-position: center;
+    /* 适合方形图片 */
+  }
+
+  /* 手机端图片容器优化 */
+  .banner-slide.mobile-slide {
+    position: relative;
+  }
+
+  .banner-slide.mobile-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent 30%, transparent 70%, rgba(0, 0, 0, 0.1));
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 手机端图片滤镜效果 */
+  .banner-slide.mobile-slide img {
+    filter: brightness(1.05) contrast(1.02);
+    /* 轻微增强图片在手机端的显示效果 */
+  }
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #333;
+  padding: 12px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .main-header {
+    border-bottom: none;
+  }
+
+  .header-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 15px;
+    position: relative;
+    margin: 0;
+    border-bottom: none;
+    display: flex;
+  }
+
+  .logo {
+    order: 1;
+  }
+
+  .nav-menu {
+    order: 2;
+  }
+
+  .logo {
+    font-size: 32px;
+    margin: 0;
+  }
+
+  .logo img {
+    width: 140px;
+    margin: 0;
+  }
+
+  /* 移动端菜单按钮 */
+  .menu-toggle {
+    display: block !important;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    margin-left: auto !important;
+    position: relative;
+    z-index: 10000;
+    order: 3;
+  }
+
+  .menu-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+  }
+
+  /* 隐藏桌面端导航菜单，显示移动端侧边栏菜单 */
+  /* 美化后的移动端侧边栏菜单 */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 80%;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-menu.active {
+    left: 0;
+    animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 菜单头部区域 */
+  .nav-menu::before {
+    display: none;
+  }
+
+  /* 菜单内容容器 */
+  .nav-menu::after {
+    display: none;
+  }
+
+  .nav-menu>a,
+  .nav-dropdown {
+    position: relative;
+    margin: 0;
+  }
+
+  .nav-menu a,
+  .dropdown-toggle {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    padding: 2px 6px !important;
+    margin: 0 !important;
+    color: #333 !important;
+    text-decoration: none !important;
+    background: #fff !important;
+    border: none !important;
+    border-bottom: 1px solid #eee !important;
+    transition: background-color 0.2s ease !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: left !important;
+    position: relative !important;
+    width: 100% !important;
+    min-height: auto !important;
+    height: auto !important;
+    line-height: 1.2 !important;
+    box-sizing: border-box !important;
+    max-height: none !important;
+    flex-shrink: 0 !important;
+  }
+
+  .nav-menu a::before,
+  .dropdown-toggle::before {
+    display: none;
+  }
+
+  .nav-menu a:hover,
+  .dropdown-toggle:hover {
+    background: #f8f9fa;
+    color: #0074c2;
+  }
+
+  .nav-menu a:active,
+  .dropdown-toggle:active {
+    background: #e9ecef;
+  }
+
+  /* 添加箭头图标 */
+  .nav-menu a:not(.dropdown-toggle)::after,
+  .dropdown-toggle::after {
+    content: '›';
+    font-size: 18px;
+    color: #ccc;
+    transition: color 0.2s ease;
+  }
+
+  .nav-menu a:hover::after,
+  .dropdown-toggle:hover::after {
+    color: #0074c2;
+  }
+
+  /* 第一个菜单项（HOME）特殊样式 */
+  .nav-menu>a:first-child {
+    margin-top: 2px !important;
+    color: #0074c2 !important;
+    font-weight: 600 !important;
+    background: #f8f9fa !important;
+  }
+
+  .nav-menu>a:first-child:hover {
+    background: #e3f2fd;
+    color: #0074c2;
+  }
+
+  .nav-dropdown {
+    position: static;
+  }
+
+  /* 移动端隐藏下拉菜单 */
+  .dropdown-menu.mobile-hidden {
+    display: none !important;
+  }
+
+  /* 移动端移除下拉指示器 */
+  .dropdown-toggle::after {
+    display: block;
+  }
+
+  /* 移动端Product链接样式 */
+  .nav-dropdown .dropdown-toggle {
+    cursor: pointer;
+  }
+
+  /* 菜单项分组间距 */
+  .nav-menu>a:not(:last-child),
+  .nav-dropdown:not(:last-child) {
+    margin-bottom: 0;
+  }
+
+  /* 遮罩层 */
+  .nav-menu.active+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+/* 桌面端保持下拉菜单功能 */
+@media (min-width: 769px) {
+  .dropdown-menu.mobile-hidden {
+    display: none;
+  }
+
+  .dropdown-toggle::after {
+    display: block;
+  }
+
+  /* 确保桌面端导航菜单显示 */
+  .nav-menu {
+    display: flex !important;
+    position: static;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+
+  /* 隐藏移动端菜单按钮 */
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* 重置移动端的导航样式 */
+  .nav-menu>a,
+  .nav-dropdown {
+    display: flex;
+    height: 100%;
+    margin: 0 15px;
+    position: relative;
+  }
+
+  .nav-menu a {
+    margin: 0 15px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 0;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-align: center;
+  }
+
+  .nav-menu a::before {
+    display: none;
+  }
+
+  .nav-menu a::after {
+    display: none;
+  }
+
+  .nav-menu a:hover {
+    background: transparent;
+    color: #0074c2;
+    transform: none;
+  }
+
+  /* 确保桌面端下拉菜单正确显示 */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    min-width: 260px;
+    background: #fff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-radius: 0 0 8px 8px;
+    z-index: 1001;
+    padding: 18px 0;
+    text-align: left;
+    /* 添加一个小的顶部边距，确保鼠标移动时不会立即离开悬停区域 */
+    margin-top: -5px;
+  }
+
+  /* 悬停区域扩展，包括下拉菜单 */
+  .nav-dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+
+  /* 确保下拉菜单和父元素之间有连接 */
+  .nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 10px;
+    background: transparent;
+  }
+
+  .dropdown-menu a {
+    display: block;
+    padding: 8px 20px;
+    color: #222;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .dropdown-menu a:hover {
+    background: #f2f8fd;
+    color: #0074c2;
+    transform: none;
+  }
+}
+
+.dropdown-menu {
+  display: none;
+  position: static;
+  min-width: 0;
+  width: 100%;
+  box-shadow: none;
+  border-radius: 8px;
+  padding: 8px 0;
+  background: #f8f8f8;
+  border-top: 1px solid #e0e0e0;
+  margin-top: 8px;
+}
+
+.dropdown-menu a {
+  font-size: 18px;
+  padding: 16px 24px;
+  line-height: 1.4;
+  border-bottom: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+  position: relative;
+  color: #333333;
+  text-decoration: none;
+  margin: 2px 8px;
+  border-radius: 6px;
+}
+
+.dropdown-menu a:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  color: #0074c2;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 116, 194, 0.15);
+}
+
+.dropdown-menu a::before {
+  content: '•';
+  position: absolute;
+  left: 16px;
+  color: #0074c2;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: brightness(1.2);
+}
+
+.dropdown-menu a:hover::before {
+  opacity: 1;
+}
+
+.menu-toggle {
+  display: none;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(0, 116, 194, 0.1);
+  transform: scale(1.05);
+}
+
+/* Featured Products Section */
+.featured-products {
+  padding: 30px 60px 40px 60px;
+  background: #fff;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.0rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+.section-underline {
+  width: 60px;
+  height: 5px;
+  background: #0074c2;
+  margin: 0 auto 40px auto;
+  border-radius: 3px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px 30px;
+  width: 100%;
+  margin: 0;
+}
+
+.product-item {
+  max-width: 256px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+.product-item img {
+  width: 100%;
+  height: 256px;
+  object-fit: contain;
+  background: #f8f8f8;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  margin-top: 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 0;
+}
+
+.product-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.product-underline {
+  width: 24px;
+  height: 3px;
+  background: #0074c2;
+  margin: 0 auto;
+  border-radius: 2px;
+}
+
+@media (max-width: 1100px) {
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-products {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+/* 导航下拉菜单样式 */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+  position: relative;
+  font-weight: 600;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  min-width: 260px;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 8px 8px;
+  z-index: 1001;
+  padding: 18px 0;
+  text-align: left;
+}
+
+/* 只在非移动端显示悬停下拉菜单 */
+@media (min-width: 769px) {
+
+  .nav-dropdown:hover .dropdown-menu,
+  .dropdown-menu:hover {
+    display: block;
+  }
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 8px 20px;
+  color: #222;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+}
+
+.dropdown-menu a:hover {
+  background: #f2f8fd;
+  color: #0074c2;
+}
+
+@media (max-width: 900px) {
+  .dropdown-menu {
+    left: 0;
+    right: 0;
+    transform: none;
+    min-width: 180px;
+  }
+}
+
+
+
+.dropdown-menu a {
+  font-size: 15px;
+  padding: 16px 20px;
+  line-height: 0.8;
+}
