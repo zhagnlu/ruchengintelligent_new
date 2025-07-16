@@ -317,6 +317,23 @@ body {
     height: 250px;
     /* 更小屏幕设置合适的高度 */
   }
+  
+  .featured-products {
+    padding: 16px 12px 24px 12px;
+  }
+  
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+  }
+  
+  .section-underline {
+    margin-bottom: 24px;
+  }
+  
+  .product-name {
+    font-size: 0.95rem;
+  }
 }
 
 /* 手机端专用图片框架 */
@@ -461,13 +478,17 @@ body {
     top: 0;
     left: -100%;
     width: 80%;
-    height: 100vh;
+    height: auto;
+    max-height: 100vh;
     background: #fff;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     transition: left 0.3s ease;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-y: auto;
   }
 
   .nav-menu.active {
@@ -489,13 +510,14 @@ body {
   .nav-dropdown {
     position: relative;
     margin: 0;
+    flex-shrink: 0;
   }
 
   .nav-menu a,
   .dropdown-toggle {
     font-size: 16px !important;
     font-weight: 500 !important;
-    padding: 2px 6px !important;
+    padding: 12px 16px !important;
     margin: 0 !important;
     color: #333 !important;
     text-decoration: none !important;
@@ -562,6 +584,9 @@ body {
 
   .nav-dropdown {
     position: static;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   /* 移动端隐藏下拉菜单 */
@@ -577,6 +602,10 @@ body {
   /* 移动端Product链接样式 */
   .nav-dropdown .dropdown-toggle {
     cursor: pointer;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 12px 16px !important;
+    border-bottom: 1px solid #eee !important;
   }
 
   /* 菜单项分组间距 */
@@ -848,6 +877,15 @@ body {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  
+  .featured-products {
+    padding: 25px 30px 35px 30px;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -856,8 +894,20 @@ body {
   }
 
   .featured-products {
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 20px 16px 30px 16px;
+  }
+  
+  .section-title {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+  }
+  
+  .section-underline {
+    margin-bottom: 30px;
+  }
+  
+  .product-name {
+    font-size: 1.0rem;
   }
 }
 
