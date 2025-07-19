@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600;800&display=swap');
+
+/* 动画关键帧 */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+/* 勾选图标脉冲动画 */
+@keyframes checkmarkPulse {
+    0% {
+        box-shadow: 0 2px 8px rgba(0, 116, 194, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 2px 12px rgba(0, 116, 194, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 2px 8px rgba(0, 116, 194, 0.3);
+    }
+}
+
+/* 勾选图标进入动画 */
+@keyframes checkmarkSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+@keyframes wave {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+}
+
+/* 基础重置样式 */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 通用样式 */
+.section-title {
+    font-size: 2.0rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.section-underline {
+    width: 60px;
+    height: 5px;
+    background: #0074c2;
+    margin: 0 auto 40px auto;
+    border-radius: 3px;
+}
+
+/* 通用按钮样式 */
+.cta-button {
+    background: #0074c2;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 116, 194, 0.3);
+}
+
+.cta-button:hover {
+    background: #005a9e;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 116, 194, 0.4);
+}
+
+.cta-button:active {
+    transform: translateY(0);
+}

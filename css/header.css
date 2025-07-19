@@ -1,0 +1,533 @@
+/* 主头部样式 */
+.main-header {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    margin: 0;
+    padding: 0;
+}
+
+.header-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 40px;
+    margin: 0;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 27px;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 800;
+    color: #0074c2;
+    margin: 0 44px 0 0;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 8px rgba(76, 161, 255, 0.08);
+}
+
+/* 桌面端，确保 logo 足够大 */
+.logo img {
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+    display: block;
+}
+
+/* 平板和手机端，适当缩小但保持清晰 */
+@media (max-width: 768px) {
+    .logo img {
+        width: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        width: 120px;
+    }
+}
+
+/* 导航菜单样式 */
+.nav-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.nav-menu>a,
+.nav-dropdown {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    position: relative;
+}
+
+.dropdown-toggle {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.nav-menu a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #222;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', Arial, sans-serif;
+    transition: color 0.2s, text-shadow 0.2s;
+}
+
+.nav-menu a:hover {
+    color: #0074c2;
+    text-shadow: 0 2px 8px rgba(76, 161, 255, 0.10);
+}
+
+@media (max-width: 768px) {
+    .nav-menu a {
+        margin: 8px 0;
+    }
+}
+
+/* 移动端菜单按钮 */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #333;
+    padding: 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 移动端样式 */
+@media (max-width: 768px) {
+    .main-header {
+        border-bottom: none;
+    }
+
+    .header-top {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px 15px;
+        position: relative;
+        margin: 0;
+        border-bottom: none;
+        display: flex;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .nav-menu {
+        order: 2;
+    }
+
+    .logo {
+        font-size: 32px;
+        margin: 0;
+    }
+
+    .logo img {
+        width: 140px;
+        margin: 0;
+    }
+
+    /* 移动端菜单按钮 */
+    .menu-toggle {
+        display: block !important;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #333;
+        padding: 8px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        margin-left: auto !important;
+        position: relative;
+        z-index: 10000;
+        order: 3;
+    }
+
+    .menu-toggle:hover {
+        background: rgba(0, 0, 0, 0.1);
+        transform: scale(1.05);
+    }
+
+    /* 隐藏桌面端导航菜单，显示移动端侧边栏菜单 */
+    /* 美化后的移动端侧边栏菜单 */
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 80%;
+        height: auto;
+        max-height: 100vh;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        transition: left 0.3s ease;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        left: 0;
+        animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 菜单头部区域 */
+    .nav-menu::before {
+        display: none;
+    }
+
+    /* 菜单内容容器 */
+    .nav-menu::after {
+        display: none;
+    }
+
+    .nav-menu>a,
+    .nav-dropdown {
+        position: relative;
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .nav-menu a,
+    .dropdown-toggle {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+        padding: 12px 16px !important;
+        margin: 0 !important;
+        color: #333 !important;
+        text-decoration: none !important;
+        background: #fff !important;
+        border: none !important;
+        border-bottom: 1px solid #eee !important;
+        transition: background-color 0.2s ease !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        text-align: left !important;
+        position: relative !important;
+        width: 100% !important;
+        min-height: auto !important;
+        height: auto !important;
+        line-height: 1.2 !important;
+        box-sizing: border-box !important;
+        max-height: none !important;
+        flex-shrink: 0 !important;
+    }
+
+    .nav-menu a::before,
+    .dropdown-toggle::before {
+        display: none;
+    }
+
+    .nav-menu a:hover,
+    .dropdown-toggle:hover {
+        background: #f8f9fa;
+        color: #0074c2;
+    }
+
+    .nav-menu a:active,
+    .dropdown-toggle:active {
+        background: #e9ecef;
+    }
+
+    /* 添加箭头图标 */
+    .nav-menu a:not(.dropdown-toggle)::after,
+    .dropdown-toggle::after {
+        content: '›';
+        font-size: 18px;
+        color: #ccc;
+        transition: color 0.2s ease;
+    }
+
+    .nav-menu a:hover::after,
+    .dropdown-toggle:hover::after {
+        color: #0074c2;
+    }
+
+    /* 第一个菜单项（HOME）特殊样式 */
+    .nav-menu>a:first-child {
+        margin-top: 2px !important;
+        color: #0074c2 !important;
+        font-weight: 600 !important;
+        background: #f8f9fa !important;
+    }
+
+    .nav-menu>a:first-child:hover {
+        background: #e3f2fd;
+        color: #0074c2;
+    }
+
+    .nav-dropdown {
+        position: static;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* 移动端隐藏下拉菜单 */
+    .dropdown-menu.mobile-hidden {
+        display: none !important;
+    }
+
+    /* 移动端移除下拉指示器 */
+    .dropdown-toggle::after {
+        display: block;
+    }
+
+    /* 移动端Product链接样式 */
+    .nav-dropdown .dropdown-toggle {
+        cursor: pointer;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 12px 16px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    /* 菜单项分组间距 */
+    .nav-menu>a:not(:last-child),
+    .nav-dropdown:not(:last-child) {
+        margin-bottom: 0;
+    }
+
+    /* 遮罩层 */
+    .nav-menu.active+.menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+        z-index: 9998;
+        animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+}
+
+/* 桌面端保持下拉菜单功能 */
+@media (min-width: 769px) {
+    .dropdown-menu.mobile-hidden {
+        display: none;
+    }
+
+    .dropdown-toggle::after {
+        display: block;
+    }
+
+    /* 确保桌面端导航菜单显示 */
+    .nav-menu {
+        display: flex !important;
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        box-shadow: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+    }
+
+    /* 隐藏移动端菜单按钮 */
+    .menu-toggle {
+        display: none !important;
+    }
+
+    /* 重置移动端的导航样式 */
+    .nav-menu>a,
+    .nav-dropdown {
+        display: flex;
+        height: 100%;
+        margin: 0 15px;
+        position: relative;
+    }
+
+    .nav-menu a {
+        margin: 0 15px;
+        font-size: 20px;
+        font-weight: 600;
+        padding: 0;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        text-align: center;
+    }
+
+    .nav-menu a::before {
+        display: none;
+    }
+
+    .nav-menu a::after {
+        display: none;
+    }
+
+    .nav-menu a:hover {
+        background: transparent;
+        color: #0074c2;
+        transform: none;
+    }
+
+    /* 确保桌面端下拉菜单正确显示 */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+        min-width: 260px;
+        background: #fff;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        border-radius: 0 0 8px 8px;
+        z-index: 1001;
+        padding: 18px 0;
+        text-align: left;
+        /* 添加一个小的顶部边距，确保鼠标移动时不会立即离开悬停区域 */
+        margin-top: -5px;
+    }
+
+    /* 悬停区域扩展，包括下拉菜单 */
+    .nav-dropdown:hover .dropdown-menu,
+    .dropdown-menu:hover {
+        display: block;
+    }
+
+    /* 确保下拉菜单和父元素之间有连接 */
+    .nav-dropdown::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 10px;
+        background: transparent;
+    }
+
+    .dropdown-menu a {
+        display: block;
+        padding: 8px 20px;
+        color: #222;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 400;
+        white-space: nowrap;
+        transition: background 0.2s, color 0.2s;
+        margin: 0;
+        border: none;
+        border-radius: 0;
+        background: transparent;
+    }
+
+    .dropdown-menu a:hover {
+        background: #f2f8fd;
+        color: #0074c2;
+        transform: none;
+    }
+}
+
+/* 导航下拉菜单样式 */
+.nav-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+    position: relative;
+    font-weight: 600;
+}
+
+.dropdown-menu {
+    display: none;
+    position: static;
+    min-width: 0;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 8px;
+    padding: 8px 0;
+    background: #f8f8f8;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 8px;
+}
+
+.dropdown-menu a {
+    font-size: 18px;
+    padding: 16px 24px;
+    line-height: 1.4;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    position: relative;
+    color: #333333;
+    text-decoration: none;
+    margin: 2px 8px;
+    border-radius: 6px;
+}
+
+.dropdown-menu a:hover {
+    background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+    color: #0074c2;
+    transform: translateX(4px);
+    box-shadow: 0 2px 8px rgba(0, 116, 194, 0.15);
+}
+
+.dropdown-menu a::before {
+    content: '•';
+    position: absolute;
+    left: 16px;
+    color: #0074c2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    filter: brightness(1.2);
+}
+
+.dropdown-menu a:hover::before {
+    opacity: 1;
+}
+
+.menu-toggle {
+    display: none;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(0, 116, 194, 0.1);
+    transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+    .dropdown-menu {
+        left: 0;
+        right: 0;
+        transform: none;
+        min-width: 180px;
+    }
+}
+
+.dropdown-menu a {
+    font-size: 15px;
+    padding: 16px 20px;
+    line-height: 0.8;
+}

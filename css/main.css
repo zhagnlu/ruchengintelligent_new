@@ -1,0 +1,22 @@
+/* 主CSS文件 - 导入所有样式模块 */
+
+/* 基础样式 */
+@import url('base.css');
+
+/* 头部导航样式 */
+@import url('header.css');
+
+/* 轮播图样式 */
+@import url('banner.css');
+
+/* 各个内容区域样式 */
+@import url('sections.css');
+
+/* 页脚样式 */
+@import url('footer.css');
+
+/* 组件样式 */
+@import url('components.css');
+
+/* 响应式设计样式 */
+@import url('responsive.css');
