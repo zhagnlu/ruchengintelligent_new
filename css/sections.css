@@ -542,7 +542,7 @@
 /* International Exports Section */
 .exports-section {
     padding: 80px 60px;
-    background: linear-gradient(135deg, #0074c2, #005a9e);
+    background: linear-gradient(135deg, #2E4A78, #2E4A78);
     position: relative;
     overflow: hidden;
 }
@@ -926,7 +926,7 @@
 
 /* About Us Page Styles */
 .about-hero {
-  background: linear-gradient(135deg, #0074c2 0%, #005a9e 100%);
+  background: linear-gradient(135deg, #2E4A78);
   color: white;
   padding: 80px 0;
   text-align: center;

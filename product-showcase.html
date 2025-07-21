@@ -41,7 +41,6 @@
       width: 100%;
       height: 100%;
       background: white;
-      clip-path: polygon(0 0, 85% 0, 100% 100%, 0 100%);
       z-index: 1;
     }
 
@@ -58,7 +57,7 @@
       position: relative;
       width: 50%;
       height: 100vh;
-      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+      background: #2E4A78;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -208,6 +207,151 @@
       font-size: 0.8rem;
     }
 
+    /* Components Section */
+    .components-section {
+      padding: 40px 0;
+      background: #f8f9fa;
+    }
+
+    .components-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .components-header {
+      margin-bottom: 60px;
+    }
+
+    .components-title {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .components-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .components-card {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .components-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+    }
+
+    .machine-image {
+      width: 50%;
+      padding-right: 30px;
+    }
+
+    .machine-photo {
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .technical-description {
+      width: 50%;
+      padding-left: 30px;
+    }
+
+    .description-title {
+      font-size: 1.8rem;
+      color: #1e3a8a;
+      margin-bottom: 15px;
+    }
+
+    .description-text {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    /* Components Section Responsive */
+    @media (max-width: 768px) {
+      .components-section {
+        padding: 60px 0;
+      }
+      
+      .components-title {
+        font-size: 2rem;
+      }
+      
+      .components-subtitle {
+        font-size: 1rem;
+      }
+      
+      .components-card {
+        flex-direction: column;
+      }
+      
+      .components-content {
+        flex-direction: column;
+        padding: 30px;
+      }
+      
+      .machine-image {
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+      
+      .technical-description {
+        width: 100%;
+        padding-left: 0;
+        text-align: center;
+      }
+      
+      .description-title {
+        font-size: 1.5rem;
+      }
+      
+      .description-text {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .components-section {
+        padding: 40px 0;
+      }
+      
+      .components-title {
+        font-size: 1.8rem;
+      }
+      
+      .components-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .components-content {
+        padding: 20px;
+      }
+      
+      .description-title {
+        font-size: 1.3rem;
+      }
+      
+      .description-text {
+        font-size: 0.95rem;
+      }
+    }
+
     /* Responsive Design */
     @media (max-width: 1200px) {
       .product-title {
@@ -355,10 +499,10 @@
       <img src="images/product/cnc-bending-machine.jpg" alt="Electro-hydraulic CNC Bending Machine" class="machine-image">
 
       <!-- Control Panel Highlight -->
-      <div class="control-panel">
+      <!-- <div class="control-panel">
         <div class="control-panel-title">Operator Control Panel</div>
         <div class="control-panel-desc">Digital Screen & Control Buttons</div>
-      </div>
+      </div> -->
     </div>
 
     <!-- Right Section - Content -->
@@ -396,7 +540,7 @@
   </section>
 
   <!-- Product Details Section -->
-  <section style="padding: 80px 0; background: #f8f9fa;">
+  <section style="padding: 40px 0; background: #f8f9fa;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
       <div style="text-align: center; margin-bottom: 60px;">
         <h2 style="font-size: 2.5rem; color: #333; margin-bottom: 20px;">Technical Specifications</h2>
@@ -439,8 +583,33 @@
     </div>
   </section>
 
+  <!-- Components Section -->
+  <section class="components-section">
+    <div class="components-container">
+      <div class="components-header">
+        <h2 class="components-title">Components</h2>
+        <p class="components-subtitle">You can better understand the performance of the machine through the following machine detail display and text description</p>
+      </div>
+      
+      <div class="components-card">
+        <div class="components-content">
+          <!-- Left Column - Machine Image -->
+          <div class="machine-image">
+            <img src="images/components/press-brake-machine.jpg" alt="Press Brake Machine" class="machine-photo">
+          </div>
+          
+          <!-- Right Column - Technical Description -->
+          <div class="technical-description">
+            <h3 class="description-title">Mechanical Structure</h3>
+            <p class="description-text">The main mechanical structure of the press brake consists of the frame, column, ram, worktable, the main cylinder and backgauge. The main components are through finite element analysis and optimized design by 3D software to fully guarantee the structural strength and rigidity of each component.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Video Section -->
-  <section id="video" style="padding: 80px 0; background: #1e3a8a; color: white;">
+  <section id="video" style="padding: 80px 0; background: #2E4A78; color: white;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;">
       <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Watch Our Machine in Action</h2>
       <p style="font-size: 1.1rem; margin-bottom: 40px; opacity: 0.9;">
@@ -477,15 +646,6 @@
           });
         }
       });
-    });
-
-    // Add scroll effect to curved background
-    window.addEventListener('scroll', function() {
-      const scrolled = window.pageYOffset;
-      const curvedBg = document.querySelector('.curved-background');
-      if (curvedBg) {
-        curvedBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-      }
     });
   </script>
 </body>
