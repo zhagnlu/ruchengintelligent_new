@@ -40,48 +40,48 @@
     </div>
   </header>
   <section class="featured-products">
-    <h3 class="section-title">Featured Products</h3>
+    <h3 class="section-title" data-translate>Featured Products</h3>
     <div class="section-underline"></div>
     <div class="products-grid">
       <div class="product-item">
         <img src="images/index/press_brake.jpg" alt="Press Brake" width="300" height="300" srcset=""
           sizes="(max-width: 300px) 100vw, 300px">
-        <div class="product-name">Press Brake</div>
+        <div class="product-name" data-translate>Press Brake</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/banner2.jpg" alt="Hydraulic Shearing Machine">
-        <div class="product-name">Hydraulic Shearing Machine</div>
+        <div class="product-name" data-translate>Hydraulic Shearing Machine</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/banner3.jpg" alt="Fiber Laser Cutting Machine">
-        <div class="product-name">Fiber Laser Cutting Machine</div>
+        <div class="product-name" data-translate>Fiber Laser Cutting Machine</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/logo.jpg" alt="Plate Rolling Machine">
-        <div class="product-name">Plate Rolling Machine</div>
+        <div class="product-name" data-translate>Plate Rolling Machine</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/logo.png" alt="Ironworker">
-        <div class="product-name">Ironworker</div>
+        <div class="product-name" data-translate>Ironworker</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/logo.jpg" alt="Hydraulic Press">
-        <div class="product-name">Hydraulic Press</div>
+        <div class="product-name" data-translate>Hydraulic Press</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/logo.png" alt="Metal Rings">
-        <div class="product-name">Metal Rings</div>
+        <div class="product-name" data-translate>Metal Rings</div>
         <div class="product-underline"></div>
       </div>
       <div class="product-item">
         <img src="images/logo.jpg" alt="Machined Parts">
-        <div class="product-name">Machined Parts</div>
+        <div class="product-name" data-translate>Machined Parts</div>
         <div class="product-underline"></div>
       </div>
     </div>
@@ -455,6 +455,21 @@
   <script src="js/components.js"></script>
   <script src="js/slider.js"></script>
   <script src="js/menu.js"></script>
+  <script src="js/translator.js"></script>
+  <script>
+    // Initialize translator after components are loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Wait for components to load, then initialize translator
+      setTimeout(() => {
+        const translator = new Translator({
+          defaultLang: 'en',
+          batchSize: 3,
+          delay: 100,
+          elements: '[data-translate]'
+        });
+      }, 500);
+    });
+  </script>
 </body>
 
 </html>
