@@ -243,7 +243,6 @@
       box-shadow: 0 6px 20px rgba(0, 116, 194, 0.4);
       transition: all 0.3s ease;
       min-width: 140px;
-      display: flex;
       align-items: center;
       justify-content: center;
     }
@@ -366,6 +365,20 @@
     }
 
     /* Responsive Design */
+    @media (min-width: 769px) {
+      .mobile-category-toggle {
+        display: none !important; /* Hide mobile toggle on desktop */
+      }
+      
+      .mobile-category-overlay {
+        display: none !important; /* Hide mobile overlay on desktop */
+      }
+      
+      .mobile-category-sidebar {
+        display: none !important; /* Hide mobile sidebar on desktop */
+      }
+    }
+
     @media (max-width: 768px) {
       .product-container {
         grid-template-columns: 1fr;
