@@ -447,23 +447,49 @@
         font-size: 1rem;
     }
 
-    .exports-carousel {
+    .simple-carousel {
         flex-direction: column;
         gap: 20px;
     }
 
-    .carousel-arrow {
+    .carousel-btn {
+        display: none;
+    }
+
+    .carousel-container {
+        order: 1;
+    }
+
+    .slide {
+        flex: 0 0 100%;
+    }
+
+    .slide img {
+        height: 180px;
+    }
+
+    .simple-carousel {
+        gap: 15px;
+        padding: 0 10px;
+    }
+
+    .carousel-btn {
         width: 40px;
         height: 40px;
+        font-size: 24px;
     }
 
-    .exports-cards {
-        flex-direction: column;
-        gap: 20px;
+    .slide {
+        flex: 0 0 calc(50% - 15px);
     }
 
-    .export-card {
-        max-width: 100%;
+    .slide img {
+        height: 200px;
+    }
+
+    .slide-label {
+        padding: 15px;
+        font-size: 1rem;
     }
 
     .export-image {

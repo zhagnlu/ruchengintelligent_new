@@ -45,6 +45,20 @@ class Translator {
     this.loadSavedLanguage();
     this.loadCachedTranslations();
     this.createProgressIndicator();
+    
+    // 添加简单的翻译测试
+    this.testTranslation();
+  }
+
+  async testTranslation() {
+    // 简单的翻译测试
+    try {
+      const testText = 'Hello';
+      const result = await this.translateText(testText, 'zh');
+      console.log('Translation test:', testText, '->', result);
+    } catch (error) {
+      console.warn('Translation test failed:', error);
+    }
   }
 
   createLanguageSelector() {
@@ -471,13 +485,17 @@ class Translator {
 
     try {
       const translation = await this.translateText(originalText, targetLang);
-      if (translation && translation !== originalText) {
+      if (translation && translation !== originalText && translation !== 'PLEASE SELECT TWO DISTINCT LANGUAGES') {
         element.textContent = translation;
         element.classList.remove('element-translating');
         element.classList.add('element-translated');
         
         // 缓存翻译结果
         this.cache.set(`${originalText}_${targetLang}`, translation);
+      } else {
+        // 如果翻译失败或返回占位符，保持原文
+        console.warn(`Translation failed or returned placeholder for: ${originalText}`);
+        element.classList.remove('element-translating');
       }
     } catch (error) {
       console.warn(`Translation failed for: ${originalText}`, error);
@@ -542,36 +560,97 @@ class Translator {
   }
 
   async translateWithLibre(text, targetLang) {
-    const response = await fetch(this.translationServices[0].url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        q: text,
-        source: 'auto',
-        target: targetLang
-      })
-    });
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+      
+      const response = await fetch(this.translationServices[0].url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          q: text,
+          source: 'auto',
+          target: targetLang
+        }),
+        signal: controller.signal
+      });
 
-    const data = await response.json();
-    return data.translatedText || null;
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      const result = data.translatedText;
+      
+      // 检查结果是否有效
+      if (result && typeof result === 'string' && result.trim() && result !== 'PLEASE SELECT TWO DISTINCT LANGUAGES') {
+        return result;
+      }
+      return null;
+    } catch (error) {
+      console.warn('LibreTranslate failed:', error);
+      return null;
+    }
   }
 
   async translateWithMyMemory(text, targetLang) {
-    const sourceLang = 'en';
-    const url = `${this.translationServices[1].url}?q=${encodeURIComponent(text)}&langpair=${sourceLang}|${targetLang}`;
-    
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.responseData?.translatedText || null;
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+      
+      const sourceLang = 'en';
+      const url = `${this.translationServices[1].url}?q=${encodeURIComponent(text)}&langpair=${sourceLang}|${targetLang}`;
+      
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      const result = data.responseData?.translatedText;
+      
+      // 检查结果是否有效
+      if (result && typeof result === 'string' && result.trim() && result !== 'PLEASE SELECT TWO DISTINCT LANGUAGES') {
+        return result;
+      }
+      return null;
+    } catch (error) {
+      console.warn('MyMemory translation failed:', error);
+      return null;
+    }
   }
 
   async translateWithYandex(text, targetLang) {
-    const sourceLang = 'en';
-    const url = `${this.translationServices[2].url}?key=trnsl.1.1.20231201&text=${encodeURIComponent(text)}&lang=${sourceLang}-${targetLang}`;
-    
-    const response = await fetch(url);
-    const data = await response.json();
-    return data.text?.[0] || null;
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000); // 10秒超时
+      
+      const sourceLang = 'en';
+      const url = `${this.translationServices[2].url}?key=trnsl.1.1.20231201&text=${encodeURIComponent(text)}&lang=${sourceLang}-${targetLang}`;
+      
+      const response = await fetch(url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const data = await response.json();
+      const result = data.text?.[0];
+      
+      // 检查结果是否有效
+      if (result && typeof result === 'string' && result.trim() && result !== 'PLEASE SELECT TWO DISTINCT LANGUAGES') {
+        return result;
+      }
+      return null;
+    } catch (error) {
+      console.warn('Yandex translation failed:', error);
+      return null;
+    }
   }
 
   updateTranslationIndicator(translating) {

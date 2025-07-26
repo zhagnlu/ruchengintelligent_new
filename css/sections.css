@@ -388,11 +388,12 @@
 }
 
 .worker-photo {
+    box-shadow: none; /* 去掉阴影 */
+    border: none; /* 去掉边框 */
     width: 100%;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s, filter 0.3s;
 }
 
 .worker-photo:hover {
@@ -574,49 +575,74 @@
     line-height: 1.2;
 }
 
-.exports-carousel {
-    position: relative;
+.simple-carousel {
     display: flex;
     align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
     gap: 30px;
+    padding: 0 20px;
 }
 
-.carousel-arrow {
-    background: rgba(255, 255, 255, 0.2);
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+.carousel-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    font-size: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     transition: all 0.3s ease;
     flex-shrink: 0;
+    opacity: 0.7;
 }
 
-.carousel-arrow:hover {
-    background: rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.5);
+.carousel-btn:hover {
+    opacity: 1;
     transform: scale(1.1);
 }
 
-.exports-cards {
-    display: flex;
-    gap: 30px;
+.carousel-container {
     flex: 1;
-    justify-content: center;
     overflow: hidden;
 }
 
-.export-card {
-    flex: 1;
-    max-width: 350px;
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 30px;
+}
+
+.slide {
+    flex: 0 0 calc(33.33% - 20px);
     background: white;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
+}
+
+.slide:hover {
+    transform: translateY(-5px);
+}
+
+.slide img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-label {
+    padding: 20px;
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    background: white;
 }
 
 .export-card:hover {
