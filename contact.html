@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Rucheng</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     body {
       background: #f7f8fa;
@@ -32,7 +33,7 @@
       gap: 24px;
     }
     .contact-title {
-      color: #377dff;
+      color: #0074c2;
       font-size: 20px;
       font-weight: 700;
       letter-spacing: 1px;
@@ -47,7 +48,7 @@
     .contact-underline {
       width: 48px;
       height: 4px;
-      background: #377dff;
+      background: #0074c2;
       border-radius: 2px;
       margin-bottom: 1.2em;
     }
@@ -82,7 +83,7 @@
     }
     .contact-detail svg {
       flex-shrink: 0;
-      color: #377dff;
+      color: #0074c2;
       width: 18px;
       height: 18px;
       margin-top: 2px;
@@ -98,7 +99,14 @@
     .contact-social svg {
       width: 18px;
       height: 18px;
-      color: #377dff;
+      color: #0074c2;
+    }
+    .contact-social i {
+      color: #0074c2;
+      font-size: 18px;
+      width: 18px;
+      min-width: 18px;
+      text-align: center;
     }
     .contact-right {
       background: none;
@@ -115,7 +123,7 @@
     .contact-form-underline {
       width: 40px;
       height: 4px;
-      background: #377dff;
+      background: #0074c2;
       border-radius: 2px;
       margin-bottom: 1.5em;
     }
@@ -139,14 +147,14 @@
     }
     .contact-form input:focus,
     .contact-form textarea:focus {
-      border-color: #377dff;
+      border-color: #0074c2;
     }
     .contact-form textarea {
       min-height: 110px;
       max-height: 220px;
     }
     .contact-form button {
-      background: linear-gradient(90deg, #377dff 0%, #0056b3 100%);
+      background: linear-gradient(90deg, #0074c2 0%, #0056b3 100%);
       color: #fff;
       font-size: 20px;
       font-weight: 600;
@@ -159,7 +167,7 @@
       box-shadow: 0 2px 12px rgba(55,125,255,0.08);
     }
     .contact-form button:hover {
-      background: linear-gradient(90deg, #0056b3 0%, #377dff 100%);
+      background: linear-gradient(90deg, #0056b3 0%, #0074c2 100%);
       box-shadow: 0 4px 18px rgba(55,125,255,0.13);
     }
     @media (max-width: 900px) {
@@ -207,10 +215,10 @@
           </div>
           <div class="contact-details-col">
             <div class="contact-details-title">OUR CONTACT DETAILS</div>
-            <div class="contact-social"><svg viewBox="0 0 24 24" fill="none"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6-.7-.02-1.36-.21-1.94-.53v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 012 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 006.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0024 4.59a8.36 8.36 0 01-2.54.7z" fill="currentColor"/></svg>Ru Cheng</div>
-            <div class="contact-social"><svg viewBox="0 0 24 24" fill="none"><path d="M22.46 6c-.77.35-1.6.58-2.47.69a4.3 4.3 0 001.88-2.37 8.59 8.59 0 01-2.72 1.04A4.28 4.28 0 0016.11 4c-2.37 0-4.29 1.92-4.29 4.29 0 .34.04.67.11.99C7.69 9.13 4.07 7.38 1.64 4.7c-.37.64-.58 1.38-.58 2.17 0 1.5.76 2.82 1.92 3.6-.7-.02-1.36-.21-1.94-.53v.05c0 2.1 1.5 3.85 3.5 4.25-.36.1-.74.16-1.13.16-.28 0-.54-.03-.8-.08.54 1.7 2.1 2.94 3.95 2.97A8.6 8.6 0 012 19.54c-.63 0-1.25-.04-1.86-.11A12.13 12.13 0 006.29 21c7.55 0 11.68-6.26 11.68-11.68 0-.18-.01-.36-.02-.54A8.18 8.18 0 0024 4.59a8.36 8.36 0 01-2.54.7z" fill="currentColor"/></svg>Rucheng@Ruchengchina</div>
-            <div class="contact-social"><svg viewBox="0 0 24 24" fill="none"><path d="M21.35 11.1c.13-.1.25-.2.36-.32.2-.2.2-.51 0-.71l-1.06-1.06c-.2-.2-.51-.2-.71 0-.12.11-.22.23-.32.36-.2.2-.2.51 0 .71l1.06 1.06c.2.2.51.2.71 0zM12 2C6.48 2 2 6.48 2 12c0 5.52 4.48 10 10 10s10-4.48 10-10c0-5.52-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" fill="currentColor"/></svg>ruchengchina@gmail.com</div>
-            <div class="contact-social"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>Rucheng</div>
+            <div class="contact-social"><i class="fab fa-facebook-f"></i> Ru Cheng</div>
+            <div class="contact-social"><i class="fab fa-twitter"></i> Rucheng@Ruchengchina</div>
+            <div class="contact-social"><i class="fab fa-google"></i> ruchengchina@gmail.com</div>
+            <div class="contact-social"><i class="fab fa-tiktok"></i> Rucheng</div>
           </div>
         </div>
       </div>
